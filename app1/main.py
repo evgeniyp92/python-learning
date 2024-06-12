@@ -1,6 +1,11 @@
-todo1 = str(input('Enter a todo: '))
-todo2 = str(input('Enter a todo: '))
-todo3 = str(input('Enter a todo: '))
-
-todos = [todo1, todo2, todo3]
+todos = []
+awaiting_input = True
+while awaiting_input:
+    todo = str(input("Enter a todo or press q to quit: "))
+    if todo == 'q':
+        awaiting_input = False
+        continue
+    else:
+        todos.append(todo.capitalize())
+        continue
 print(todos)
