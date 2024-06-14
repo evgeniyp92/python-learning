@@ -16,7 +16,7 @@ while True:
         case 'edit':
             index = int(input('Enter the number of the todo to edit > '))
             new_todo = str(input('Enter the edited todo > '))
-            todos[index - 1] = new_todo
+            todos[index - 1] = new_todo.capitalize().title()
         case 'finish':
             index = int(input('Enter the number of the todo to finish > ')) - 1
             todos.pop(index)
