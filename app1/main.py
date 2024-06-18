@@ -8,12 +8,14 @@ while True:
         case 'add':
             # Get input from user
             todo = input('Enter a todo > ') + "\n"
-            # Open the file and read lines, copy the todos into state, and close the file again
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+
+            # Using context manager, no need to close files
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
             # Append the new todo
             todos.append(todo.capitalize().title())
+
             # Open the file again in write mode and write lines again
             # basic modes: w-write (blowaway), r-read
             file = open('todos.txt', 'w')
