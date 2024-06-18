@@ -42,12 +42,28 @@ while True:
 
         case 'edit':
             index = int(input('Enter the number of the todo to edit > '))
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
             new_todo = str(input('Enter the edited todo > '))
             todos[index - 1] = new_todo.capitalize().title()
 
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+
         case 'finish':
             index = int(input('Enter the number of the todo to finish > ')) - 1
-            todos.pop(index)
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
+            todos.pop(index - 1)
+
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+
+            print('Todo finished successfully')
 
         case 'exit':
             break
