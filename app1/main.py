@@ -18,14 +18,13 @@ while True:
 
             # Open the file again in write mode and write lines again
             # basic modes: w-write (blowaway), r-read
-            file = open('todos.txt', 'w')
-            file.writelines(todos)
-            file.close()
+            # refactored with context manager
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
 
         case 'show' | 'display':
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
             # Cleaning up a list via a for loop
             new_todos = []
