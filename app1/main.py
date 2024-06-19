@@ -4,7 +4,7 @@ while True:
     # for index, item in enumerate(todos):
     #     print(f"{index + 1}. {item}")
     user_action = input(user_prompt).strip().lower()
-    if 'add' in user_action:
+    if user_action.startswith('add'):
         # Get input from user
         # todo = input('Enter a todo > ') + "\n"
         todo = user_action[4:] + "\n"
@@ -22,7 +22,7 @@ while True:
         with open('todos.txt', 'w') as file:
             file.writelines(todos)
 
-    elif 'show' in user_action:
+    elif user_action.startswith('show'):
         with open('todos.txt', 'r') as file:
             todos = file.readlines()
 
@@ -40,7 +40,7 @@ while True:
         for index, item in enumerate(new_todos):
             print(f'{index + 1}. {item}')
 
-    elif 'edit' in user_action:
+    elif user_action.startswith('edit'):
         index = int(user_action[5:])
 
         with open('todos.txt', 'r') as file:
@@ -52,7 +52,7 @@ while True:
         with open('todos.txt', 'w') as file:
             file.writelines(todos)
 
-    elif 'finish' in user_action:
+    elif user_action.startswith('finish'):
         index = int(user_action[7:]) - 1
 
         with open('todos.txt', 'r') as file:
@@ -65,7 +65,7 @@ while True:
 
         print('Todo finished successfully')
 
-    elif 'exit' in user_action:
+    elif user_action.startswith('exit'):
         break
 
     # default case handling
