@@ -1,5 +1,12 @@
 user_prompt = "Type add/show/edit/finish/exit > "
 
+
+def get_todos():
+    with open("todos.txt", "r") as file:
+        todos = file.readlines()
+    return todos
+
+
 while True:
     # for index, item in enumerate(todos):
     #     print(f"{index + 1}. {item}")
@@ -10,8 +17,10 @@ while True:
         todo = user_action[4:] + "\n"
 
         # Using context manager, no need to close files
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
+        # with open('todos.txt', 'r') as file:
+        #     todos = file.readlines()
+
+        todos = get_todos()
 
         # Append the new todo
         todos.append(todo.capitalize().title())
@@ -23,8 +32,9 @@ while True:
             file.writelines(todos)
 
     elif user_action.startswith('show'):
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
+        # with open('todos.txt', 'r') as file:
+        #     todos = file.readlines()
+        todos = get_todos()
 
         # Cleaning up a list via a for loop
         new_todos = []
@@ -44,8 +54,9 @@ while True:
         try:
             index = int(user_action[5:])
 
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+            # with open('todos.txt', 'r') as file:
+            #     todos = file.readlines()
+            todos = get_todos()
 
             new_todo = str(input('Enter the edited todo > '))
             todos[index - 1] = new_todo.capitalize().title() + '\n'
@@ -60,8 +71,9 @@ while True:
         try:
             index = int(user_action[7:]) - 1
 
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+            # with open('todos.txt', 'r') as file:
+            #     todos = file.readlines()
+            todos = get_todos()
 
             todos.pop(index)
 
