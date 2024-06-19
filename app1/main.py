@@ -1,13 +1,15 @@
 user_prompt = "Type add/show/edit/finish/exit > "
 
 
-def get_todos(filepath):
+def get_todos(filepath='todos.txt'):
+    """Open file and return list of todos"""
     with open(filepath, "r") as file:
         todos = file.readlines()
     return todos
 
 
-def write_todos(filepath, todos):
+def write_todos(todos, filepath='todos.txt'):
+    """Write todos to file"""
     with open(filepath, "w") as file:
         file.writelines(todos)
 
@@ -35,7 +37,7 @@ while True:
         # refactored with context manager
         # with open('todos.txt', 'w') as file:
         #     file.writelines(todos)
-        write_todos('todos.txt', todos)
+        write_todos(todos, 'todos.txt')
 
     elif user_action.startswith('show'):
         # with open('todos.txt', 'r') as file:
@@ -69,7 +71,7 @@ while True:
 
             # with open('todos.txt', 'w') as file:
             #     file.writelines(todos)
-            write_todos('todos.txt', todos)
+            write_todos(todos, 'todos.txt')
         except ValueError:
             print('Invalid input')
             continue
@@ -86,10 +88,10 @@ while True:
 
             # with open('todos.txt', 'w') as file:
             #     file.writelines(todos)
-            write_todos('todos.txt', todos)
+            write_todos(todos, 'todos.txt')
 
             print('Todo finished successfully')
-        except ValueError | IndexError:
+        except ValueError or IndexError or TypeError:
             print('Invalid input')
             continue
 
