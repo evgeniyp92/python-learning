@@ -41,29 +41,37 @@ while True:
             print(f'{index + 1}. {item}')
 
     elif user_action.startswith('edit'):
-        index = int(user_action[5:])
+        try:
+            index = int(user_action[5:])
 
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
-        new_todo = str(input('Enter the edited todo > '))
-        todos[index - 1] = new_todo.capitalize().title() + '\n'
+            new_todo = str(input('Enter the edited todo > '))
+            todos[index - 1] = new_todo.capitalize().title() + '\n'
 
-        with open('todos.txt', 'w') as file:
-            file.writelines(todos)
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+        except ValueError:
+            print('Invalid input')
+            continue
 
     elif user_action.startswith('finish'):
-        index = int(user_action[7:]) - 1
+        try:
+            index = int(user_action[7:]) - 1
 
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
-        todos.pop(index)
+            todos.pop(index)
 
-        with open('todos.txt', 'w') as file:
-            file.writelines(todos)
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
 
-        print('Todo finished successfully')
+            print('Todo finished successfully')
+        except ValueError | IndexError:
+            print('Invalid input')
+            continue
 
     elif user_action.startswith('exit'):
         break
