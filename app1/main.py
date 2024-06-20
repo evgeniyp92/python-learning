@@ -1,18 +1,7 @@
+# Keep in mind the inverted syntax from Javascript
+import functions
+
 user_prompt = "Type add/show/edit/finish/exit > "
-
-
-def get_todos(filepath='todos.txt'):
-    """Open file and return list of todos"""
-    with open(filepath, "r") as file:
-        todos = file.readlines()
-    return todos
-
-
-def write_todos(todos, filepath='todos.txt'):
-    """Write todos to file"""
-    with open(filepath, "w") as file:
-        file.writelines(todos)
-
 
 while True:
     # for index, item in enumerate(todos):
@@ -27,7 +16,7 @@ while True:
         # with open('todos.txt', 'r') as file:
         #     todos = file.readlines()
 
-        todos = get_todos('todos.txt')
+        todos = functions.get_todos('todos.txt')
 
         # Append the new todo
         todos.append(todo.capitalize().title())
@@ -37,12 +26,12 @@ while True:
         # refactored with context manager
         # with open('todos.txt', 'w') as file:
         #     file.writelines(todos)
-        write_todos(todos, 'todos.txt')
+        functions.write_todos(todos, 'todos.txt')
 
     elif user_action.startswith('show'):
         # with open('todos.txt', 'r') as file:
         #     todos = file.readlines()
-        todos = get_todos('todos.txt')
+        todos = functions.get_todos('todos.txt')
 
         # Cleaning up a list via a for loop
         new_todos = []
@@ -64,14 +53,14 @@ while True:
 
             # with open('todos.txt', 'r') as file:
             #     todos = file.readlines()
-            todos = get_todos('todos.txt')
+            todos = functions.get_todos('todos.txt')
 
             new_todo = str(input('Enter the edited todo > '))
             todos[index - 1] = new_todo.capitalize().title() + '\n'
 
             # with open('todos.txt', 'w') as file:
             #     file.writelines(todos)
-            write_todos(todos, 'todos.txt')
+            functions.write_todos(todos, 'todos.txt')
         except ValueError:
             print('Invalid input')
             continue
@@ -82,13 +71,13 @@ while True:
 
             # with open('todos.txt', 'r') as file:
             #     todos = file.readlines()
-            todos = get_todos('todos.txt')
+            todos = functions.get_todos('todos.txt')
 
             todos.pop(index)
 
             # with open('todos.txt', 'w') as file:
             #     file.writelines(todos)
-            write_todos(todos, 'todos.txt')
+            functions.write_todos(todos, 'todos.txt')
 
             print('Todo finished successfully')
         except ValueError or IndexError or TypeError:
