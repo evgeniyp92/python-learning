@@ -1,5 +1,6 @@
 # Keep in mind the inverted syntax from Javascript
 import functions
+import time
 
 user_prompt = "Type add/show/edit/finish/exit > "
 
