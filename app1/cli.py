@@ -3,6 +3,8 @@ import functions
 import time
 
 user_prompt = "Type add/show/edit/finish/exit > "
+now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+print(f'It is {now}')
 
 while True:
     # for index, item in enumerate(todos):
