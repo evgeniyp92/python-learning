@@ -4,9 +4,11 @@ from fpdf import FPDF
 pdf = FPDF(orientation="P", unit="mm", format="A4")
 pdf.set_auto_page_break(auto=False, margin=0)
 
-def draw_lines(num_steps):
+
+def draw_lines(num_steps, line_size=10):
     for i in range(num_steps):
-        pdf.line(10, 21 + (i * 10), 200, 21 + (i * 10))
+        pdf.line(10, 21 + (i * line_size), 200, 21 + (i * line_size))
+
 
 df = pd.read_csv('topics.csv')
 for index, row in df.iterrows():
