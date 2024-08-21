@@ -4,13 +4,12 @@ df = pd.read_csv('hotels.csv', sep=',')
 
 
 class Hotel:
-
     def __init__(self, hotel_uid):
         self.hotel_uid = int(hotel_uid)
         self.hotel = df.loc[df['uid'] == hotel_uid]
         self.name = self.hotel.name.squeeze()
         self.city = self.hotel.city.squeeze()
-        self.is_available = self.hotel.available.values[0]
+        self.is_available = self.hotel.available.squeeze()
         pass
 
     def create_booking(self):
