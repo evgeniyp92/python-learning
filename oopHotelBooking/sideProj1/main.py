@@ -1,11 +1,10 @@
 import pandas as pd
 from util import pdfgen
 
+
 class Inventory:
     def __init__(self):
         self.df = pd.read_csv('inventory.csv', sep=',')
-
-    def print(self):
         print(self.df)
 
     def get_amount(self, product_id):
@@ -32,8 +31,10 @@ class Purchase:
             i.reduce_qty_by_one(self.product_id)
             r = Receipt(product)
             r.generate()
+            return
         else:
             print('There is no stock left of this product, please try again')
+            return
 
 
 class Receipt:
@@ -48,7 +49,6 @@ class Receipt:
 
 
 inventory = Inventory()
-inventory.print()
 
 uid = int(input('Choose an article to buy > '))
 
