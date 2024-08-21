@@ -1,0 +1,4 @@
+id,name,price,in_stock,quantity
+100,Laptop Chromebook,999.99,True,86
+101,Mouse Laser Sharp,12.99,True,53
+102,RTX 4080 Super NVIDIA,1499.99,False,0
